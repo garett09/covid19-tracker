@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 public class CoronaVirusDataServices {
 
-    private static String VIRUS_DATA_URL= "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
+    private static String VIRUS_DATA_URL= "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/latest/owid-covid-latest.csv";
 
     private List<LocationStats> allStats = new ArrayList<>();
 
@@ -38,16 +38,14 @@ public class CoronaVirusDataServices {
         HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
         StringReader csvBodyReader = new StringReader(httpResponse.body());
         Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvBodyReader);
+
         for (CSVRecord record : records) {
             LocationStats locationStat= new LocationStats();
-            locationStat.setState(record.get("Province/State"));
-            locationStat.setCountry(record.get("Country/Region"));
-            int latestCases = Integer.parseInt(record.get(record.size()-1));
-            int prevCases = Integer.parseInt(record.get(record.size()-2));
-            locationStat.setLatestTotalCases(latestCases);
-            locationStat.setDiffFromPrevDay(latestCases - prevCases);
-
-
+            locationStat.setCountry(record.get("location"));
+            locationStat.setTotalCases(record.get("total_cases"));
+            locationStat.setNewCases(record.get("new_cases"));
+            locationStat.setTotalDeaths(record.get("total_deaths"));
+            locationStat.setNewDeaths(record.get("new_deaths"));
             newStats.add(locationStat);
         }
     this.allStats = newStats;

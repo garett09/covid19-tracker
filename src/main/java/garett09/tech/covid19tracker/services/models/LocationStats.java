@@ -2,17 +2,21 @@ package garett09.tech.covid19tracker.services.models;
 
 public class LocationStats {
 
-    private String state;
     private String country;
-    private int latestTotalCases;
-    private int diffFromPrevDay;
+    private String totalCases;
+    private String newCases;
+    private String totalDeaths;
+    private String newDeaths;
+    private String firstDose;
+    private String secondDose;
+    private int getLatest;
 
-    public String getState() {
-        return state;
+    public int getGetLatest() {
+        return getLatest;
     }
 
-    public void setState(String state) {
-        this.state = state;
+    public void setGetLatest(int getLatest) {
+        this.getLatest = getLatest;
     }
 
     public String getCountry() {
@@ -23,30 +27,65 @@ public class LocationStats {
         this.country = country;
     }
 
-    public int getLatestTotalCases() {
-        return latestTotalCases;
+    public String getTotalCases() {
+        return totalCases;
     }
 
-    public void setLatestTotalCases(int latestTotalCases) {
-        this.latestTotalCases = latestTotalCases;
+    public void setTotalCases(String totalCases) {
+        this.totalCases = totalCases;
     }
 
-    public int getDiffFromPrevDay() {
-        return diffFromPrevDay;
+    public String getNewCases() {
+        return newCases;
     }
 
-    public void setDiffFromPrevDay(int diffFromPrevDa) {
-        this.diffFromPrevDay = diffFromPrevDay;
+    public void setNewCases(String newCases) {
+        this.newCases = newCases;
+    }
+
+    public String getTotalDeaths() {
+        return totalDeaths;
+    }
+
+    public void setTotalDeaths(String totalDeaths) {
+        this.totalDeaths = totalDeaths;
+    }
+
+    public String getNewDeaths() {
+        return newDeaths;
+    }
+
+    public void setNewDeaths(String newDeaths) {
+        this.newDeaths = newDeaths;
+    }
+
+    public String getFirstDose() {
+        return firstDose;
+    }
+
+    public void setFirstDose(String firstDose) {
+        this.firstDose = firstDose;
+    }
+
+    public String getSecondDose() {
+        return secondDose;
+    }
+
+    public void setSecondDose(String secondDose) {
+        this.secondDose = secondDose;
     }
 
     @Override
     public String toString() {
         return "LocationStats{" +
-                "state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", latestTotalCases=" + latestTotalCases +
+                "country='" + country + '\'' +
+                ", totalCases='" + totalCases + '\'' +
+                ", newCases='" + newCases + '\'' +
+                ", totalDeaths='" + totalDeaths + '\'' +
+                ", newDeaths='" + newDeaths + '\'' +
+                ", firstDose='" + firstDose + '\'' +
+                ", secondDose='" + secondDose + '\'' +
                 '}';
-
     }
 }
 
